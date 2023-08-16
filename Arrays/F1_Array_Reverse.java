@@ -1,4 +1,4 @@
-public class Array_Reverse_F1 {
+public class F1_Array_Reverse {
 
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3, -8, 7, 3, -2 };

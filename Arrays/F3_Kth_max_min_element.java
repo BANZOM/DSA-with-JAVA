@@ -1,6 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
-public class Kth_max_min_element_F3 {
+public class F3_Kth_max_min_element {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.print("Enter the size of array: ");

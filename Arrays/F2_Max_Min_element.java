@@ -1,4 +1,4 @@
-public class Max_Min_element_F2 {
+public class F2_Max_Min_element {
 
     /**
      * Nested class 'Max_Min' to store the minimum and maximum values.
@@ -16,7 +16,7 @@ public class Max_Min_element_F2 {
         int[] arr = {};
         System.out.print("Array: ");
 
-        Max_Min_element_F2 instance = new Max_Min_element_F2();
+        F2_Max_Min_element instance = new F2_Max_Min_element();
         instance.printArray(arr);
 
         Max_Min answer = instance.getMaxMin(arr);
