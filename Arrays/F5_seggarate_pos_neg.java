@@ -14,6 +14,11 @@ public class F5_seggarate_pos_neg {
 
         System.out.print("Original Array: ");
         printArray(arr);
+
+        seggarate(arr);
+
+        System.out.print("Seggarated Array: ");
+        printArray(arr);
     }
 
     static void printArray(int[] arr) {
@@ -21,5 +26,21 @@ public class F5_seggarate_pos_neg {
             System.out.print(i + " ");
         
         System.out.println();
+    }
+
+    static void seggarate(int[] arr) {
+        Queue<Integer> pos = new LinkedList<>();
+        Queue<Integer> neg = new LinkedList<>();
+        for (int i : arr) {
+            if (i >= 0)
+                pos.add(i);
+            else
+                neg.add(i);
+        }
+        int i=0;
+        while(!pos.isEmpty())
+            arr[i++] = pos.poll();
+        while(!neg.isEmpty())
+            arr[i++] = neg.poll();
     }
 }
