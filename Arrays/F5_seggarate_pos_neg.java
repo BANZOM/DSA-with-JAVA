@@ -1,5 +1,9 @@
 import java.util.*;
 public class F5_seggarate_pos_neg {
+    /**
+     * Takes an array of integers as input and separates the positive and negative numbers in the array.
+     * It then rearranges the array so that all the positive numbers come before the negative numbers.
+     */
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         System.out.print("Enter the size of array: ");
@@ -15,32 +19,39 @@ public class F5_seggarate_pos_neg {
         System.out.print("Original Array: ");
         printArray(arr);
 
-        seggarate(arr);
+        segregate(arr);
 
-        System.out.print("Seggarated Array: ");
+        System.out.print("Segregated Array: ");
         printArray(arr);
     }
 
+    /**
+     * Prints the elements of the array.
+     */
     static void printArray(int[] arr) {
-        for (int i : arr)
+        for (int i : arr) {
             System.out.print(i + " ");
-        
+        }
+
         System.out.println();
     }
 
-    static void seggarate(int[] arr) {
-        Queue<Integer> pos = new LinkedList<>();
-        Queue<Integer> neg = new LinkedList<>();
-        for (int i : arr) {
-            if (i >= 0)
-                pos.add(i);
-            else
-                neg.add(i);
+    /**
+     * Separates the positive and negative numbers in the array and rearranges the array so that
+     * all the positive numbers come before the negative numbers.
+     */
+    static void segregate(int[] arr) {
+        Queue<Integer> negativeQueue = new LinkedList<>();
+        int target = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] >= 0) {
+                arr[target++] = arr[i];
+            } else {
+                negativeQueue.offer(arr[i]);
+            }
         }
-        int i=0;
-        while(!pos.isEmpty())
-            arr[i++] = pos.poll();
-        while(!neg.isEmpty())
-            arr[i++] = neg.poll();
+        while (!negativeQueue.isEmpty()) {
+            arr[target++] = negativeQueue.poll();
+        }
     }
 }
