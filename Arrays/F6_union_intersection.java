@@ -6,6 +6,13 @@ import java.util.HashSet;
 
 public class F6_union_intersection {
     public static void main(String[] args) {
+        /**
+         * Finds count of union elements and count of intersection elements
+         *
+         * @param arr1 The first array.
+         * @param arr2 The second array.
+         * @return The size of the union set.
+         */
         Scanner in = new Scanner(System.in);
 
         // Input Array 1:
@@ -19,7 +26,6 @@ public class F6_union_intersection {
             arr1.add(in.nextInt());
         }
 
-       
         // Input Array 2:
         System.out.print("Enter the size of array2: ");
         int m = in.nextInt();
@@ -41,14 +47,13 @@ public class F6_union_intersection {
 
         Set<Integer> set = new HashSet<>();
 
-        while(n > 0 || m > 0)
-        {
-            if(n > 0) {
-                set.add(arr1.get(n-1));
+        while (n > 0 || m > 0) {
+            if (n > 0) {
+                set.add(arr1.get(n - 1));
                 n--;
             }
-            if(m > 0) {
-                set.add(arr2.get(m-1));
+            if (m > 0) {
+                set.add(arr2.get(m - 1));
                 m--;
             }
         }
