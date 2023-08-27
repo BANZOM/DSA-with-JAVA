@@ -27,9 +27,8 @@ class F10_MinOf_Max_Heights_Diff {
         int k = s.nextInt();
 
         F10_MinOf_Max_Heights_Diff instance = new F10_MinOf_Max_Heights_Diff();
-        
-        System.out.println("Min of Max Heights Diff: " + instance.minOfMaxHeightsDiff(arr, n, k));
 
+        System.out.println("Min of Max Heights Diff: " + instance.minOfMaxHeightsDiff(arr, n, k));
 
     }
 
@@ -39,7 +38,7 @@ class F10_MinOf_Max_Heights_Diff {
 
         for (int i = 1; i < n; i++) {
             int left = Math.min(arr[0] + k, arr[i] - k);
-            int right = Math.max(arr[i-1] + k, arr[n - 1] - k);
+            int right = Math.max(arr[i - 1] + k, arr[n - 1] - k);
 
             ans = Math.min(ans, right - left);
         }
