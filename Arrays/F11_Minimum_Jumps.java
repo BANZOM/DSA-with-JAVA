@@ -9,7 +9,7 @@ public class F11_Minimum_Jumps {
         System.out.print("Enter the elements of array: ");
         for (int i = 0; i < n; i++)
             arr[i] = s.nextInt();
-        
+
         System.out.println("Minimum number of jumps: " + minimumJumps(arr, n));
     }
 
@@ -19,15 +19,15 @@ public class F11_Minimum_Jumps {
         int currentReach = 0;
 
         for (int i = 0; i < n - 1; i++) {
-            
+
             currentMax = Math.max(currentMax, i + arr[i]);
-            
-            if(i == currentReach) {
+
+            if (i == currentReach) {
                 jumps++;
                 currentReach = currentMax;
             }
 
-            if(arr[i] == 0 && i == currentMax)
+            if (arr[i] == 0 && i == currentMax)
                 return -1;
         }
 
