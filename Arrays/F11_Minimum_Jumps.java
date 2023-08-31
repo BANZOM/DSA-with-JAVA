@@ -19,8 +19,8 @@ public class F11_Minimum_Jumps {
         int currentReach = 0;
 
         for (int i = 0; i < n - 1; i++) {
-            if(i + arr[i] > currentMax)
-                currentMax = i + arr[i];
+            
+            currentMax = Math.max(currentMax, i + arr[i]);
             
             if(i == currentReach) {
                 jumps++;
