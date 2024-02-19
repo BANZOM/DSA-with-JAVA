@@ -8,11 +8,9 @@ public class Q1 {
         int low = 0;
         int high = arr.length - 1;
         while (low <= high) {
-            int mid = low + (high-low)/2;
-            int c = mid+1;
-
-            if (c > arr[mid]) {
-                ans = mid;
+            int mid = low + (high - low)/2;
+            if (arr[mid] < mid+1) {
+                ans = arr[mid];
                 high = mid - 1;
             }
             else {
@@ -22,7 +20,7 @@ public class Q1 {
         return ans;
     }
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 3, 4};
+        int[] arr = {1, 2, 3, 4, 4};
         System.out.println(answer(arr));
     }
     
