@@ -47,3 +47,6 @@ public class Q10 extends FastWriter {
         }
     }
 }
+/*
+ * TC: O(queries)
+ */
