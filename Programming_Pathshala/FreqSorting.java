@@ -37,14 +37,9 @@ public class FreqSorting extends FastReader {
         System.out.println();
 
         // This Sort based on decresing order of their freq
-        Collections.sort(list, new Comparator<Pair>() {
-
-            @Override
-            public int compare(Pair o1, Pair o2) {
+        Collections.sort(list, (Pair o1, Pair o2) -> {
                 return (o1.freq != o2.freq) ? o2.freq -  o1.freq: o1.value - o2.value;
-            }
-            
-        });
+            });
 
         for (Pair pair : list) {
             for (int i = 0; i < pair.getFreq(); i++) {
