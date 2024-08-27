@@ -20,17 +20,41 @@ public class F13 {
     private static long calculateMaxValue(int[] arr, int n, int p, int q, int r) {
         long ans = Long.MIN_VALUE;
 
-        for (int i = 0; i < n; i++) {
-            for (int j = i+1; j < n; j++) {
-                for (int k = j+1; k < n; k++) {
-                    ans = Math.max(ans, p*arr[i] + q*arr[j] + r*arr[k]);
-                }
+        int[] prefixMax = prefixMaxArray(arr);
+        int[] suffixMax = suffixMaxArray(arr);
+
+        int[] maxThree = new int[3];
+        
+        for(int i=1; i<arr.length-1; i++) {
+            if(prefixMax[i-1] + arr[i] + suffixMax[i+1] > ans) {
+                maxThree[0] = prefixMax[i-1];
+                maxThree[1] = arr[i];
+                maxThree[2] = suffixMax[i+1];
+                ans = prefixMax[i-1] + arr[i] + suffixMax[i+1];
             }
         }
 
         return ans;
     }
 
+    private static int[] prefixMaxArray(int[] arr) {
+        int[] prefixMax = new int[arr.length];
+        prefixMax[0] = arr[0];
+        for (int i = 1; i < prefixMax.length; i++) {
+            prefixMax[i] = Math.max(prefixMax[i-1], arr[i]);
+        }
+        return prefixMax;
+    } 
     
+    private static int[] suffixMaxArray(int[] arr) {
+        int[] suffixMax = new int[arr.length];
+        suffixMax[arr.length - 1] = arr[arr.length-1];
+
+        for (int i = arr.length-2; i >= 0; i--) {
+            suffixMax[i] = Math.max(suffixMax[i++], arr[i]);
+        }
+
+        return suffixMax;
+    } 
     
 }
