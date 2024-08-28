@@ -2,16 +2,16 @@
  * F13:
  * Given an Array and three ints P,Q,R
  * Find max Value of eqn: P*A[i] + Q*A[j] + R*A[k]
- * where i < j < k
+ * where i <= j <= k
  */
 public class F13 {
 
     public static void main(String[] args) {
-        int[] arr = new int[] {-11, 2, 3, 4, 5};
+        int[] arr = new int[] {-1, -2, -3, -4, -5};
         int N = 6;
-        int P = -1;
+        int P = 1;
         int Q = 2;
-        int R = 3;
+        int R = -3;
 
         System.out.println(calculateMaxValue(arr, N, P, Q, R));
         
@@ -25,14 +25,14 @@ public class F13 {
         int[] maxThree = new int[3];
         int prefixMax = arr[0]*p;
 
-        for(int i=1; i<arr.length-1; i++) {
-            if(prefixMax + arr[i]*q + suffixMax[i+1] > ans) {
+        for(int i=0; i<arr.length; i++) {
+            prefixMax = Math.max(prefixMax,arr[i]*p);
+            if(prefixMax + arr[i]*q + suffixMax[i] > ans) {
                 maxThree[0] = prefixMax;
                 maxThree[1] = arr[i]*q;
-                maxThree[2] = suffixMax[i+1];
+                maxThree[2] = suffixMax[i];
                 ans = maxThree[0] + maxThree[1] + maxThree[2];
             }
-            prefixMax = Math.max(prefixMax,arr[i]*p);
         }
 
         System.out.println(maxThree[0] + " " + maxThree[1] + " " + maxThree[2]);
