@@ -6,29 +6,32 @@
  */
 public class F15_Min_Swaps_to_bring_together {
     public static void main(String[] args) {
-        int[] arr = new int[]{1,8,1,6,2,1,5,6,9};
+        int[] arr = new int[]{1,1,4,5,2,2,1,5,6,9};
         int k = 3;
 
         System.out.println(minSwaps(arr, k));
     }
 
     private static int minSwaps(int[] arr, int k) {
-        int start = -1;
-        int end = -1;
+        int maxConsecutiveLessThan3 = 0;
         int countLessThan3Elements = 0;
 
+        int start = -1;
+        int end = -1;
         for (int i = 0; i < arr.length; i++) {
             if(arr[i] <= k) {
                 end = i;
-                if(start == -1) {
-                    start = i;
-                }
+                if(start == -1) start = i;
                 countLessThan3Elements++;
+                maxConsecutiveLessThan3 = Math.max(maxConsecutiveLessThan3, end-start+1);
+                continue;
             }
+            end = -1;
+            start = -1;
         }
 
-        System.out.println("Start : " + start + ", End : " + end);
-
-        return 0;
+        System.out.println(maxConsecutiveLessThan3);
+        int minSwapsCount = countLessThan3Elements - maxConsecutiveLessThan3;
+        return minSwapsCount;
     }
 }
