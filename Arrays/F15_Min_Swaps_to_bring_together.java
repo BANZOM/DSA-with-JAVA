@@ -6,32 +6,39 @@
  */
 public class F15_Min_Swaps_to_bring_together {
     public static void main(String[] args) {
-        int[] arr = new int[]{1,1,4,5,2,2,1,5,6,9};
-        int k = 3;
+        int[] arr = new int[]{10, 12, 20, 20, 5, 19, 19, 12, 1, 20, 1};
+        int k = 1;
 
         System.out.println(minSwaps(arr, k));
     }
 
     private static int minSwaps(int[] arr, int k) {
-        int maxConsecutiveLessThan3 = 0;
-        int countLessThan3Elements = 0;
+        int validElemtnsCount = 0;
 
-        int start = -1;
-        int end = -1;
-        for (int i = 0; i < arr.length; i++) {
-            if(arr[i] <= k) {
-                end = i;
-                if(start == -1) start = i;
-                countLessThan3Elements++;
-                maxConsecutiveLessThan3 = Math.max(maxConsecutiveLessThan3, end-start+1);
-                continue;
-            }
-            end = -1;
-            start = -1;
+        // Count of total valid elements
+        for(int element: arr) {
+            if (element <= k) validElemtnsCount++;
         }
 
-        System.out.println(maxConsecutiveLessThan3);
-        int minSwapsCount = countLessThan3Elements - maxConsecutiveLessThan3;
+        if(validElemtnsCount <= 1 || validElemtnsCount == arr.length) return 0;
+        
+        // Count of elements in first window
+        int countInValidSize = 0;
+        for(int i=0; i<validElemtnsCount; i++) {
+            if(arr[i] <= k) countInValidSize++;
+        }
+
+        int minSwapsCount = validElemtnsCount-countInValidSize;
+
+        // Count in next windows, and update the minSwapsCount to get the ans
+        for(int i=validElemtnsCount; i<arr.length; i++) {
+            if(arr[i] <= k) countInValidSize++;
+            if(arr[i-validElemtnsCount] <= k) countInValidSize--;
+            
+            minSwapsCount = Math.min(minSwapsCount, validElemtnsCount-countInValidSize);
+            
+        }
+
         return minSwapsCount;
     }
 }
