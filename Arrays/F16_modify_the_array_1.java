@@ -2,6 +2,9 @@
  * Given an array of size N, contains 0 to N-1 elements, all distinct.
  * Modify the array such that: if A[i] = j, then transform it to A[j] = i;
  */
+
+import java.util.Arrays;
+
 public class F16_modify_the_array_1 {
 
     public static void main(String[] args) {
@@ -11,7 +14,13 @@ public class F16_modify_the_array_1 {
     }
 
     static void printModifiedArray(int[] arr, int size) {
-        
+        int[] ans = new int[size];
+
+        for(int i=0; i<size; i++) {
+            ans[arr[i]] = i;
+        }
+
+        System.out.println(Arrays.toString(ans));
     }
     
 }
