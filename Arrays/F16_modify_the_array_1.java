@@ -14,13 +14,26 @@ public class F16_modify_the_array_1 {
     }
 
     static void printModifiedArray(int[] arr, int size) {
-        int[] ans = new int[size];
-
+        
         for(int i=0; i<size; i++) {
-            ans[arr[i]] = i;
+            if(arr[i] >= 0) {
+                int tmpIdx = i;
+                int tmpValue = arr[i];
+                while (tmpValue != i) {
+                    int nextValue = arr[tmpValue];
+                    arr[tmpValue] = -1 * (tmpIdx + 1);
+                    tmpIdx = tmpValue;
+                    tmpValue = nextValue;
+                }
+                arr[i] = -1 * (tmpIdx + 1);
+            }
         }
 
-        System.out.println(Arrays.toString(ans));
+        for (int i = 0; i < size; i++) {
+            arr[i] = -1* arr[i] - 1;
+        }
+
+        System.out.println(Arrays.toString(arr));
     }
     
 }
