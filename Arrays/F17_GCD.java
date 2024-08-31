@@ -3,23 +3,21 @@
  */
 public class F17_GCD {
     public static void main(String[] args) {
-        int num1 = 26;
-        int num2 = 13;
+        int num1 = 9999991;
+        int num2 = 9999992;
 
         System.out.println(findGCD(num1, num2));
         
     }
 
     static int findGCD(int num1, int num2) {
-        int minNum = Math.min(num1, num2);
-        int gdc = 1;
 
-        for(int i=2; i<=minNum; i++) {
-            if (num1 % i == 0 && num2 % i == 0) {
-                gdc = Math.max(gdc, i);
-            }
+        while (num1 % num2 != 0) {
+            int tmp = num2;
+            num2 = num1 % num2;
+            num1 = tmp;
         }
 
-        return gdc;
+        return num2;
     }
 }
