@@ -1,4 +1,3 @@
-import java.util.*;
 /**
  * F19_inclusion_exclusion
  * Given a number N, and two nums A and B
@@ -15,20 +14,20 @@ public class F19_inclusion_exclusion {
     }
 
     static int count(int N, int A, int B) {
-        Set<Integer> set = new LinkedHashSet<>();
-        int tmp = A;
-        while (A <= N) {
-            set.add(A);
-            A += tmp;
-        }
+        int countForA = N / A;
+        int countForB = N / B;
+        int extraCount = N / getLCM(A, B);
+        return countForA + countForB - extraCount;
+    }
 
-        tmp = B;
-        while (B <= N) {
-            set.add(B);
-            B += tmp;
-        }
+    static int getLCM(int A, int B) {
+        return (A * B) / getHCF(A, B);
+    }
 
-        System.out.println(set);
-        return set.size();
+    static int getHCF(int A, int B) {
+        if (A % B == 0) {
+            return B;
+        }
+        return getHCF(B, A % B);
     }
 }
