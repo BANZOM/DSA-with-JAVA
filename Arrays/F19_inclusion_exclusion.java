@@ -15,14 +15,20 @@ public class F19_inclusion_exclusion {
     }
 
     static int count(int N, int A, int B) {
-        int ans = 0;
-        
-        for (int i = 1; i <= N; i++) {
-            if (i%A == 0 || i%B == 0) {
-                ans++;
-            }
+        Set<Integer> set = new LinkedHashSet<>();
+        int tmp = A;
+        while (A <= N) {
+            set.add(A);
+            A += tmp;
         }
-        
-        return ans;
+
+        tmp = B;
+        while (B <= N) {
+            set.add(B);
+            B += tmp;
+        }
+
+        System.out.println(set);
+        return set.size();
     }
 }
