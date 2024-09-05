@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.List;
 /*
  * Find the factors of Number N
  */
@@ -8,11 +10,17 @@ public class F20_Factorisation_Concept {
     }
 
     static void printFactors(int N) {
-        for(int i=1; i<=N/2; i++) {
+        int sqrtOfN = (int) Math.sqrt(N);
+        // System.out.println(sqrtOfN);
+
+        List<Integer> list = new LinkedList<>();
+
+        for(int i=1; i<=sqrtOfN; i++) {
             if (N%i == 0) {
                 System.out.println(i);
+                if(i != N/i) list.add(0, N/i);
             }
         }
-        System.out.println(N);
+        list.forEach(System.out::println);
     }
 }
