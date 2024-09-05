@@ -8,10 +8,11 @@ public class F20_Factorisation_Concept {
     }
 
     static void printFactors(int N) {
-        for(int i=1; i<=N; i++) {
+        for(int i=1; i<=N/2; i++) {
             if (N%i == 0) {
                 System.out.println(i);
             }
         }
+        System.out.println(N);
     }
 }
