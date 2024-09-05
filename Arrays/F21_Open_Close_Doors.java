@@ -23,7 +23,7 @@ public class F21_Open_Close_Doors {
 
         for(int i=1; i<=N; i++) {
             int countToggle = getFactorsCount(i)%2;
-            output.add(countToggle == 0 ? 0:1);
+            output.add(countToggle);
         }
 
         return output;
