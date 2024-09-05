@@ -12,7 +12,7 @@ import java.util.*;;
  */
 public class F21_Open_Close_Doors {
     public static void main(String[] args) {
-        int N = 7;
+        int N = 10;
         List<Integer> ans = getFinalResult(N);
         ans.forEach(x -> System.out.print(x + " "));
         System.out.println();
@@ -22,7 +22,7 @@ public class F21_Open_Close_Doors {
         List<Integer> output = new ArrayList<>(Collections.nCopies(N, 0));
 
         for(int i=0; i<N; i++) {
-            for(int j=0; j<N; j++) {
+            for(int j=i; j<N; j++) {
                 // if is multiple
                 if((j+1)%(i+1) == 0) {
                     int val = 1-output.get(j); // toggle the value i.e 0 -> 1 or 1 -> 0
