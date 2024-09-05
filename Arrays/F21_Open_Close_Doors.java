@@ -19,18 +19,27 @@ public class F21_Open_Close_Doors {
     }
 
     static List<Integer> getFinalResult(int N) {
-        List<Integer> output = new ArrayList<>(Collections.nCopies(N, 0));
+        List<Integer> output = new ArrayList<>();
 
-        for(int i=0; i<N; i++) {
-            for(int j=i; j<N; j++) {
-                // if is multiple
-                if((j+1)%(i+1) == 0) {
-                    int val = 1-output.get(j); // toggle the value i.e 0 -> 1 or 1 -> 0
-                    output.set(j, val); // update the value of that door
-                }
-            }
+        for(int i=1; i<=N; i++) {
+            int countToggle = getFactorsCount(i)%2;
+            output.add(countToggle == 0 ? 0:1);
         }
 
         return output;
+    }
+
+    static int getFactorsCount(int N) {
+        int count = 0;
+        int sqrtOfN = (int) Math.sqrt(N);
+
+        for(int i=1; i<=sqrtOfN; i++) {
+            if(N%i == 0) {
+                count++;
+                if(i != N/i) count ++;
+            }
+        }
+
+        return count;
     }
 }
