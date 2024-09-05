@@ -14,10 +14,12 @@ public class F21_Open_Close_Doors {
     public static void main(String[] args) {
         int N = 10;
         List<Integer> ans = getFinalResult(N);
-        ans.forEach(System.out::println);
+        ans.forEach(x -> System.out.print(x + " "));
+        System.out.println();
     }
 
     static List<Integer> getFinalResult(int N) {
-
+        List<Integer> output = new ArrayList<>(Collections.nCopies(N, 0));
+        return output;
     }
 }
