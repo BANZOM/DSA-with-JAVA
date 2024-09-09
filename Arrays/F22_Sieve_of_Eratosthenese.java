@@ -4,7 +4,7 @@ import java.util.*;
  */
 public class F22_Sieve_of_Eratosthenese {
     public static void main(String[] args) {
-        int N = 10000;
+        int N = 100;
         List<Integer> primeNumbers = seiveOfEratosthenese(N);
         primeNumbers.forEach(e -> System.out.print(e + " "));
         System.out.println();
@@ -13,9 +13,9 @@ public class F22_Sieve_of_Eratosthenese {
     static List<Integer> seiveOfEratosthenese(int N) {
         int[] prime = new int[N];
         
-        for(int i=1; i<=Math.sqrt(N); i++) prime[i-1] = i;
+        for(int i=1; i<=N; i++) prime[i-1] = i;
         prime[0] = 0;
-        for(int i=0; i<N; i++) {
+        for(int i=0; i<Math.sqrt(N); i++) {
             int val = prime[i];
             if(val != 0)
                 for(int j = val*val; j<=N; j+=val) {
