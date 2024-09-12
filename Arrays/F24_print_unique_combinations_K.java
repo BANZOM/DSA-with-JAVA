@@ -6,10 +6,29 @@ import java.util.*;
  */
 public class F24_print_unique_combinations_K {
     public static void main(String[] args) {
-        int N = 4;
-        int K = 2;
-        List<Integer> output = method();
+        int N = 100;
+        int K = 99;
+        List<List<Integer>> output = method(N, K);
         System.out.println(output);
+    }
+
+    private static List<List<Integer>> method(int N, int K) {
+        List<List<Integer>> ans = new ArrayList<>();
+        
+        if(K == 0) return ans;
+
+        for(int i=1; i<=N-K+1; i++) {
+            for (int j = i+1; j <= N-K+2; j++) {
+                List<Integer> tmp = new ArrayList<>(Arrays.asList(i));
+                int x = j;
+                while(x < j+K-1) {
+                    tmp.add(x);
+                    x++;
+                }
+                ans.add(tmp);
+            }
+        }
+        return ans;
     }
 
     
