@@ -11,28 +11,37 @@ public class F31_ThreeSum {
 
     static class Solution {
         static List<List<Integer>> threeSum(int[] nums) {
-            Set<List<Integer>> ans = new HashSet<>();
-            int n = nums.length;
-    
-            for(int i=0; i < n-2; i++) {
-                List<Integer> triplet = new ArrayList<>(Arrays.asList(nums[i]));
-                Map<Integer,Integer> map = new HashMap<>();
-                int target = 0-nums[i];
-    
-                for(int j=i+1; j<n; j++) {
-                    if(map.containsKey(target-nums[j])) {
-                        triplet.add(nums[j]);
-                        triplet.add(map.get(target-nums[j]));
-                        Collections.sort(triplet);
-                        ans.add(triplet);
-                        triplet = new ArrayList<>(Arrays.asList(nums[i]));
-                    }else {
-                        map.put(nums[j],nums[j]);
+            List<List<Integer>> ans = new ArrayList<>();
+            Arrays.sort(nums);
+
+            for(int i=0; i<nums.length-2; i++) {
+                if(i > 0 && nums[i] == nums[i-1]) continue;
+
+                int left = i+1;
+                int right = nums.length-1;
+
+                while (left < right) {
+                    int sum = nums[i] + nums[left] + nums[right];
+                    if(sum == 0) {
+                        ans.add(Arrays.asList(nums[i],nums[left],nums[right]));
+
+                        while (left < right && nums[left] == nums[left+1]) {
+                            left++;
+                        }
+                        while (left < right && nums[right] == nums[right-1]) {
+                            right--;
+                        }
+                        left++;
+                        right--;
+                    } else if (sum < 0) {
+                        left++;
+                    } else {
+                        right--;
                     }
                 }
             }
-    
-            return new ArrayList<>(ans);
+
+            return ans;
         }
     }
 }
