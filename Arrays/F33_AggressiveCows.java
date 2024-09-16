@@ -47,21 +47,4 @@ public class F33_AggressiveCows {
         }
         return false;
     }
-
-    static int[] getMinPossibleDistance(int[] stalls) {
-        int[] d = new int[2];
-        d[0] = Integer.MAX_VALUE;
-        d[1] = Integer.MIN_VALUE;
-
-        for(int i=0; i<stalls.length-1; i++) {
-            int dist= stalls[i+1] - stalls[i];
-            if(dist < 0) dist = -1 * dist;
-            
-            d[0] = Math.min(d[0], dist);
-            d[1] = Math.max(d[1], dist);
-        }
-
-        return d;
-    }
-
 }
