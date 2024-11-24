@@ -58,6 +58,29 @@ class LinkedList {
         size++;
     }
 
+    int remove(int idx) throws Exception{
+        if(idx >= size) {
+            throw new Exception("Index is greater than size of list.");
+        }
+        if(idx == 0) {
+            Node temp = head;
+            head = head.next;
+            temp.next = null;
+            return temp.data;
+        }
+
+        int count = 1;
+        Node currentNode = head;
+        while (currentNode.next != null && count < idx) {
+            currentNode = currentNode.next;
+            count++;
+        }
+        Node temp = currentNode.next;
+        currentNode.next = temp.next;
+        temp.next = null;
+        return temp.data;
+    }
+
     int getSize() {
         return this.size;
     }
@@ -82,11 +105,25 @@ public class MyLinkedList {
     public static void main(String[] args) throws Exception{
         LinkedList list = new LinkedList();
         list.add(1);
+        System.out.println(list);
         list.add(2);
+        System.out.println(list);
         list.add(3);
+        System.out.println(list);
+        list.add(1,-1);
         list.add(3,4);
+        System.out.println(list);
 
-        System.out.println(list.getSize());
+        try{
+            list.remove(4);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        list.remove(3);
+        System.out.println(list);
+
+        list.remove(1);
         System.out.println(list);
     }
 }
