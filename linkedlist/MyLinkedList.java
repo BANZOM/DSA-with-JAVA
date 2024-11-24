@@ -13,7 +13,7 @@ class Node {
 class LinkedList {
 
     Node head;
-    int size;
+    private int size;
 
     LinkedList() {
         head = null;
@@ -22,10 +22,9 @@ class LinkedList {
 
     void add(int data) {
         Node newNode = new Node(data);
-        if(head == null) {
+        if (head == null) {
             head = newNode;
-        }
-        else {
+        } else {
             Node currentNode = head;
             while (currentNode.next != null) {
                 currentNode = currentNode.next;
@@ -36,15 +35,14 @@ class LinkedList {
     }
 
     void add(int idx, int data) throws Exception {
-        if(idx > size) {
+        if (idx > size) {
             throw new Exception("Index is greater than size of list.");
         }
         Node newNode = new Node(data);
-        if(idx == 0) {
+        if (idx == 0) {
             newNode.next = head;
             head = newNode;
-        }
-        else {
+        } else {
             int count = 1;
             Node currentNode = head;
             while (currentNode.next != null && count < idx) {
@@ -58,11 +56,12 @@ class LinkedList {
         size++;
     }
 
-    int remove(int idx) throws Exception{
-        if(idx >= size) {
+    int remove(int idx) throws Exception {
+        if (idx >= size) {
             throw new Exception("Index is greater than size of list.");
         }
-        if(idx == 0) {
+        this.size--;
+        if (idx == 0) {
             Node temp = head;
             head = head.next;
             temp.next = null;
@@ -94,7 +93,7 @@ class LinkedList {
             if (current.next != null) {
                 sb.append(", ");
             }
-            current=current.next;
+            current = current.next;
         }
         sb.append("]");
         return sb.toString();
@@ -102,7 +101,7 @@ class LinkedList {
 }
 
 public class MyLinkedList {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
         LinkedList list = new LinkedList();
         list.add(1);
         System.out.println(list);
@@ -110,13 +109,13 @@ public class MyLinkedList {
         System.out.println(list);
         list.add(3);
         System.out.println(list);
-        list.add(1,-1);
-        list.add(3,4);
+        list.add(1, -1);
+        list.add(3, 4);
         System.out.println(list);
 
-        try{
+        try {
             list.remove(4);
-        } catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
 
@@ -125,8 +124,7 @@ public class MyLinkedList {
 
         list.remove(1);
         System.out.println(list);
+
+        System.out.println(list.getSize());
     }
 }
-
-
-
