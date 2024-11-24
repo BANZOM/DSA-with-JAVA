@@ -35,6 +35,33 @@ class LinkedList {
         size++;
     }
 
+    void add(int idx, int data) throws Exception {
+        if(idx > size) {
+            throw new Exception("Index is greater than size of list.");
+        }
+        Node newNode = new Node(data);
+        if(idx == 0) {
+            newNode.next = head;
+            head = newNode;
+        }
+        else {
+            int count = 1;
+            Node currentNode = head;
+            while (currentNode.next != null && count < idx) {
+                currentNode = currentNode.next;
+                count++;
+            }
+            Node temp = currentNode.next;
+            currentNode.next = newNode;
+            newNode.next = temp;
+        }
+        size++;
+    }
+
+    int getSize() {
+        return this.size;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
@@ -52,11 +79,14 @@ class LinkedList {
 }
 
 public class MyLinkedList {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         LinkedList list = new LinkedList();
         list.add(1);
         list.add(2);
         list.add(3);
+        list.add(3,4);
+
+        System.out.println(list.getSize());
         System.out.println(list);
     }
 }
