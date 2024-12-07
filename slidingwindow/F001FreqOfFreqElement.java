@@ -4,12 +4,34 @@ import java.util.Arrays;
 
 public class F001FreqOfFreqElement {
     public static void main(String[] args) {
-        int[] nums = { 1,2,4};
-        int k = 5;
+        int[] nums = { 3, 9, 6 };
+        int k = 2;
         System.err.println(solve(nums, k));
+        System.out.println(solve2(nums, k));
     }
 
     private static int solve(int[] nums, int k) {
+        int freq = 1;
+        int currentSum = 0;
+
+        Arrays.sort(nums);
+
+        for (int l = 0, r = 0; r < nums.length; r++) {
+            currentSum += nums[r];
+            int count = r - l + 1;
+            int expectedSum = nums[r] * count;
+            if (Math.abs(expectedSum - currentSum) <= k) {
+                freq = Math.max(freq, count);
+            } else {
+                currentSum -= nums[l];
+                l++;
+            }
+        }
+
+        return freq;
+    }
+
+    private static int solve2(int[] nums, int k) {
         int freq = 1;
         Arrays.sort(nums);
 
